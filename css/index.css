@@ -1,0 +1,19 @@
+.body {
+background-color:burlywood;
+
+}
+
+.textoPrincipal {
+    text-shadow: -1px -1px 1px rgb(117, 5, 5),
+    0px 4px 1px rgba(0,0,0,0.5),
+    4px 4px 5px rgba(0,0,0,0.7),
+    0px 0px 7px rgba(0,0,0,0.4);;
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+.subtitulo {
+    text-align: center;
+    letter-spacing: 1.5ex;
+    text-shadow: 3px;
+}
