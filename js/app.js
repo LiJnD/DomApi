@@ -55,6 +55,7 @@ function CreadorApi(pokemon) {
   const sprite = document.createElement("img");
   sprite.src = pokemon.sprites.front_default;
 
+
   spriteContainer.appendChild(sprite);
 
   const number = document.createElement("p");
