@@ -65,10 +65,15 @@ function CreadorApi(pokemon) {
   name.classList.add("name");
   name.textContent = pokemon.name;
 
+  const precio = document.createElement("p");
+  precio.classList.add("precio");
+  precio.textContent = "$25.000";
+
   card.appendChild(spriteContainer);
   card.appendChild(number);
   card.appendChild(name);
-
+  card.appendChild(precio);
+  
   const cardBack = document.createElement("div");
   cardBack.classList.add("pokemon-block-back");
 
