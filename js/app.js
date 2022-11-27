@@ -1,4 +1,6 @@
 const pokemonContainer = document.querySelector(".pokemon-container");
+const pokemonesItems = document.createElement('pokemones');
+const templateItems = document.createElement("template-carro").content
 const fragment = document.createDocumentFragment();
 const spinner = document.querySelector("#spinner");
 const previous = document.querySelector("#previous");
@@ -142,7 +144,7 @@ function removeChildNodes(parent) {
   }
 }
 //carito de compra
-const agregrarCarrito = e => {  
+const agregrarCarrito = e => {
   allCarrito(e.target.parentElement)
 }
 //llenbarcarrito
@@ -154,9 +156,24 @@ const allCarrito = pokemon1 => {
     precio: pokemon1.querySelector('h5').textContent,
     cantidad: 1
   }
-  
-  console.log(productoPokemos)
-  carrito[productoPokemos.id] = {...productoPokemos}
+
+  carrito[productoPokemos.id] = { ...productoPokemos }
+  console.log(carrito)
+  mosrarProducto();
+}
+
+const mosrarProducto = () => {
+  Object.values(carrito).forEach(productoPokemos1 => {
+    templateItems.querySelector('th').textContent = productoPokemos1.id;
+    templateItems.querySelectorAll('td')[0].textContent = productoPokemos1.name;
+    templateItems.querySelectorAll('td')[1].textContent = productoPokemos1.cantidad;
+    templateItems.querySelector('spand').textContent = productoPokemos1.precio * productoPokemos1.cantidad;
+    templateItems.querySelector('.btn-suma').dataset.id = productoPokemos1.id;
+    templateItems.querySelector('.btn-resta').dataset.id = productoPokemos1.id;
+    const clone = templateItems.cloneNode(true)
+    fragment.appendChild(clone)
+  })
+  pokemonesItems.appendChild(fragment)
 }
 
 pokemonContainer.appendChild(fragment);

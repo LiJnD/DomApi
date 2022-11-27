@@ -21,12 +21,37 @@
 </head>
 
 <body>
-    <!--Navegacion-->
     <!--Cuerpo-->
     <h1 class="title">BIENVENIDOS A LA TIENDA DE LOS POKEMONES</h1>
     <div class="pokemon-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Items</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Acción</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody id="pokemones"></tbody>
 
+        </table>
     </div>
+    <!--carrito-->
+    <template id="template-carro">
+        <tr>
+            <th scope="row">Id</th>
+            <td>Nombre</td>
+            <td>Cantidad</td>
+            <td>
+                <button class="btn btn-suma btn-sm">+</button>
+                <button class="btn btn-resta btn-sm">-</button>
+            </td>
+            <td>$ <spand>0</spand></td>
+        </tr>
+    </template>
+
     <!--paguinacion-->
     <nav class="pagination" aria-label="...">
         <ul class="pagination">
@@ -38,10 +63,12 @@
             </li>
         </ul>
     </nav>
+
     <div id="spinner" class="spinner-border text-light" role="status">
         <span class="visually-hidden">Loading...</span>
     </div>
+
     <script src="/js/app.js"></script>
-    <script src="/js/carrito.js"></script>
 </body>
+
 </html>
