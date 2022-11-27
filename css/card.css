@@ -15,7 +15,7 @@ body {
     margin-top: 30px;
 }
 
-.pokemon-block{
+.pokemon-block {
     box-shadow: 60px -16px red;
     border-radius: 10px;
     padding: 10px;
@@ -99,10 +99,21 @@ body {
     font-family: 'fantasy';
     text-align: center;
     text-shadow: -2px -2px 2px #aaa,
-    0px 4px 1px rgba(18, 15, 15, 0.676);;
+        0px 4px 1px rgba(18, 15, 15, 0.676);
+    ;
     letter-spacing: 5px;
 }
 
 .buttonBuy {
+    background-color: blanchedalmond;
+    box-shadow: 7px 7px 10px rgb(11, 11, 14);
     border-radius: 5px;
+    height: 35px;
+    width: 120px;
+}
+
+.buttonBuy:hover {
+    background-color: black;
+    box-shadow: 7px 7px 14px blue;
+    color: white;
 }
