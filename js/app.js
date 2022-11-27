@@ -65,12 +65,12 @@ function CreadorApi(pokemon) {
   const number = document.createElement("p");
   number.textContent = `#${pokemon.id.toString().padStart(3, 0)}`;
   //nombre
-  const name = document.createElement("p");
+  const name = document.createElement("h4");
   name.classList.add("name");
   name.textContent = pokemon.name;
 
   //precios
-  const precio = document.createElement("p");
+  const precio = document.createElement("h5");
   precio.classList.add("precio");
   precio.textContent = "$25.000";
 
@@ -78,6 +78,7 @@ function CreadorApi(pokemon) {
   card.appendChild(number);
   card.appendChild(name);
   card.appendChild(precio);
+  //une todos los datos delanteros(card) del pokemon
   const clone = card.cloneNode(true)
   fragment.appendChild(clone)
 
@@ -92,7 +93,7 @@ function CreadorApi(pokemon) {
 
 
   cardBack.appendChild(progressBars(pokemon.stats));
-  cardBack.appendChild(compra);
+  card.appendChild(compra);
 
   cardContainer.appendChild(card);
   cardContainer.appendChild(cardBack);
@@ -141,20 +142,21 @@ function removeChildNodes(parent) {
   }
 }
 //carito de compra
-const agregrarCarrito = e => {
-  console.log(e.target.parentElemnt)
-  allCarrito(e.target.parentElemnt)
+const agregrarCarrito = e => {  
+  allCarrito(e.target.parentElement)
 }
-
+//llenbarcarrito
 const allCarrito = pokemon1 => {
-  console.log(pokemon1)
-  const allPokemos = {
+
+  const productoPokemos = {
     id: pokemon1.querySelector('button').dataset.id,
-    precio: pokemon1.querySelector('p').textContent,
-    name: pokemon1.querySelector('p').textContent,
+    name: pokemon1.querySelector('h4').textContent,
+    precio: pokemon1.querySelector('h5').textContent,
     cantidad: 1
   }
-  console.log(allPokemos)
+  
+  console.log(productoPokemos)
+  carrito[productoPokemos.id] = {...productoPokemos}
 }
 
 pokemonContainer.appendChild(fragment);
