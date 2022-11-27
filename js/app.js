@@ -1,7 +1,11 @@
 const pokemonContainer = document.querySelector(".pokemon-container");
+const fragment = document.createDocumentFragment();
 const spinner = document.querySelector("#spinner");
 const previous = document.querySelector("#previous");
 const next = document.querySelector("#next");
+let carrito = {}
+
+pokemonContainer.addEventListener('click', e => { agregrarCarrito(e) })
 
 let limit = 11;
 let offset = 1;
@@ -57,14 +61,15 @@ function CreadorApi(pokemon) {
 
 
   spriteContainer.appendChild(sprite);
-
+  //id
   const number = document.createElement("p");
   number.textContent = `#${pokemon.id.toString().padStart(3, 0)}`;
-
+  //nombre
   const name = document.createElement("p");
   name.classList.add("name");
   name.textContent = pokemon.name;
 
+  //precios
   const precio = document.createElement("p");
   precio.classList.add("precio");
   precio.textContent = "$25.000";
@@ -73,11 +78,21 @@ function CreadorApi(pokemon) {
   card.appendChild(number);
   card.appendChild(name);
   card.appendChild(precio);
-  
+  const clone = card.cloneNode(true)
+  fragment.appendChild(clone)
+
   const cardBack = document.createElement("div");
   cardBack.classList.add("pokemon-block-back");
 
+  //comprar
+  const compra = document.createElement("button");
+  compra.classList.add("buttonBuy");
+  compra.dataset.id = pokemon.id;
+  compra.textContent = "Buy";
+
+
   cardBack.appendChild(progressBars(pokemon.stats));
+  cardBack.appendChild(compra);
 
   cardContainer.appendChild(card);
   cardContainer.appendChild(cardBack);
@@ -125,5 +140,22 @@ function removeChildNodes(parent) {
     parent.removeChild(parent.firstChild);
   }
 }
+//carito de compra
+const agregrarCarrito = e => {
+  console.log(e.target.parentElemnt)
+  allCarrito(e.target.parentElemnt)
+}
 
+const allCarrito = pokemon1 => {
+  console.log(pokemon1)
+  const allPokemos = {
+    id: pokemon1.querySelector('button').dataset.id,
+    precio: pokemon1.querySelector('p').textContent,
+    name: pokemon1.querySelector('p').textContent,
+    cantidad: 1
+  }
+  console.log(allPokemos)
+}
+
+pokemonContainer.appendChild(fragment);
 Pokemon2Fetch(offset, limit);

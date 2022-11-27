@@ -102,3 +102,7 @@ body {
     0px 4px 1px rgba(18, 15, 15, 0.676);;
     letter-spacing: 5px;
 }
+
+.buttonBuy {
+    border-radius: 5px;
+}
